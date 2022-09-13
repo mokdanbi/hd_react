@@ -18,7 +18,7 @@ const Header = () => {
             <div className="hd_wrap">
                 <h1>
                     <a href="/" >
-                        현대엘리베이터
+                        현대엘리베이트
                     </a>
                 </h1>
                 <nav className="Gnb inner">

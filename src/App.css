@@ -223,7 +223,9 @@
 }
 
 .MainVisual {
+  position: relative;
   padding: 155px 0 0 0;
+  color: var(--lc);
 }
 
 .MainVisual figure {
@@ -232,6 +234,11 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 150% auto;
+}
+
+.MainVisual figure.on {
+  background-size: 100% auto;
+  transition: 1s;
 }
 
 .MainVisual .itm01 {
@@ -251,4 +258,46 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.MainVisual .slick-track,
+.MainVisual .slick-slide {
+  transition-duration: 5ms;
+}
+
+.MainVisual .slideNum {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  margin: 0 0 0 -600px;
+}
+
+.MainVisual .slideTab {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-100%, -50%);
+  margin: 0 0 0 600px;
+}
+
+.MainVisual .slideArrows button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  border: none;
+  color: var(--lc);
+  font-size: 50px;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  line-height: 1;
+}
+
+.MainVisual .slideArrows button:first-child {
+  margin: 0 0 0 -700px;
+}
+
+.MainVisual .slideArrows button:last-child {
+  margin: 0 0 0 700px;
 }
