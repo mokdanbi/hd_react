@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import TopBanner from './TopBanner';
 
 const NAVLINK = [
@@ -10,10 +10,19 @@ const NAVLINK = [
 ]
 
 const Header = () => {
-    const [TG, setTG] = useState(false);
-    const [TS, setTS] = useState(false);
+    const [TG, setTG] = useState([false, false]);
+    const HL = useRef();
+    useEffect(() => {
+        window.addEventListener("scroll", () => {
+            let sct = window.scrollY;
+            sct > 0
+                ? HL.current.classList.add('on')
+                : HL.current.classList.remove('on')
+        })
+    }, [])
+    //const [TS, setTS] = useState(false);
     return (
-        <header className="Header">
+        <header className="Header" ref={HL}>
             <TopBanner />
             <div className="hd_wrap">
                 <h1>
@@ -39,18 +48,17 @@ const Header = () => {
                         <li><a href="#!">주요프로젝트</a></li>
                         <li><a href="#!">IR</a></li>
                     </ul>
-                    <div className={'lang ' + (TG ? 'on' : '')}>
-                        <strong onClick={() => setTG(!TG)}><i className="xi-globus"></i> KOR <i className="xi-angle-down arrow"></i></strong>
+                    <div className={'lang ' + (TG[0] ? 'on' : '')}>
+                        <strong onClick={() => setTG([!TG[0], false])}><i className="xi-globus"></i> KOR <i className="xi-angle-down arrow"></i></strong>
                         <ul className="lang_box">
                             <li><a href="#!">KOR</a></li>
                             <li><a href="#!">ENG</a></li>
                             <li><a href="#!">CHN</a></li>
                         </ul>
                     </div>
-                    <div className={`top_search ${TS ? 'on' : ''}`}>
-                        <strong onClick={() => setTS(!TS)}><i className="xi-search"></i></strong>
+                    <div className={'top_search ' + (TG[1] ? 'on' : '')}>
+                        <strong onClick={() => setTG([false, !TG[1]])}><i className="xi-search"></i></strong>
                         <div className="search_box">
-
                             <form action="#!">
                                 <input type="text" placeholder="검색어를 입력하세요" required />
                                 <button>
