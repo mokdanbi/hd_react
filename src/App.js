@@ -5,6 +5,8 @@ import MainContent from './component/MainContent';
 import Portfolio from './component/Portfolio';
 import Solution from './component/Solution';
 import Promotion from './component/Promotion';
+import News from './component/News';
+import Footer from './component/Footer';
 
 const App = () => {
   return (
@@ -16,7 +18,9 @@ const App = () => {
         <Portfolio />
         <Solution />
         <Promotion />
+        <News />
       </main>
+      <Footer />
     </div>
   );
 }
